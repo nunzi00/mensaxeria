@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk>
+    <system-config>
+<ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
+</system-config>
+<device-config>
+   <device-type>ajax</device-type>
+   <embed><![CDATA[
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    ]]></embed>
+</device-config>
+<device-config>
+   <device-type>ajax</device-type>
+   <embed><![CDATA[
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    ]]></embed>
+</device-config>
+</zk>

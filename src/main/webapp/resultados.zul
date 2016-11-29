@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<listbox mold="paging" pageSize="10" id="myList" istbox mold="paging" pageSize="10" id="myList"
+ use="com.packtpub.zk.media.view.MyListbox"
+ itemRenderer="com.packtpub.zk.media.view.
+ MediaListItemRenderer" model="${model}">
+ <listhead>
+ <listheader label="" />
+ <listheader label="" />
+ <listheader label="Id" sort="auto"/>
+ <listheader label="Title" sort="auto"/>
+ </listhead>
+</listbox>
+</zk>

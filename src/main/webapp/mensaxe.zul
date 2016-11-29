@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?forward uri="/login.zul" if="${!com.concello.mensaxeria.User:isLogin()}"?>
+
+
+<!--DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+Date date = new Date();
+System.out.println(dateFormat.format(date));  -->
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
+<zk xmlns:n="native">
+    <div self="@{define(header)}" width="100%"></div>
+    <div self="@{define(content)}" width="100%">
+        <include src="novoMensaxe.zul"/>
+    </div>
+    <div self="@{define(footer)}" width="100%"></div>
+</zk>

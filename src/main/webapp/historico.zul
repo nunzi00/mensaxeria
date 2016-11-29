@@ -1,0 +1,42 @@
+<?meta charset="utf-8"/?>
+<?meta http-equiv="X-UA-Compatible" content="IE=edge"/?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"/?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
+<zk>
+    <div self="@{define(content)}" width="100%"
+        apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.concello.mensaxeria.MensaxeModel')"
+        >
+        Mensajes: <label value="@load(vm.size)" />
+        <grid height="350px" model="@load(vm.mensajes)"
+            emptyMessage="No hay mensajes enviados"
+            mold="paging" pageSize="25">
+            <columns>
+                <column label="id" width="50px" />
+                <column label="Mensaje" />
+                <column label="Enviado Por" width="150px" />
+                <column label="Enviado" width="80px" />
+                <column label="Fecha" width="100px" />
+                <column label="Fecha Envio" width="100px" />
+            </columns>
+            <template name="model">
+                <row>
+                    <label value="@load(each.id_mensaxe)" />
+                    <label value="@load(each.contenido)" />
+                    <label value="@load(each.enviado_por)" />
+                    <zk if="${(each.enviado == 1)}">
+                            <label value="Si"/>
+                    </zk>
+                    <zk if="${(each.enviado == 0)}">
+                            <label value="No"/>
+                    </zk>
+
+                    <!--<label value="@load(each.enviado)"  if="${each.enviado=='0'}/>-->
+                    <label value="@load(each.fecha_creacion)" />
+                    <label value="@load(each.fecha_envio)" />
+                    <!--<button label="Delete" onClick="@command('removeMail', mail=each)" />-->
+                </row>
+            </template>
+        </grid>
+
+    </div>
+</zk>

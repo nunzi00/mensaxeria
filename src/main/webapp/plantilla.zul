@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    
+    <!--<style src="resources/estilo.css" />-->
+        <div class="container-fluid" xmlns:n="native" self="@{insert(header)}">
+            <div  class="row" xmlns:n="native" >
+                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native">
+                    <n:h1  xmlns:n="native" >App. Mensaxeria</n:h1>
+                </div>
+            </div>
+        <div  class="row" xmlns:n="native" >
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native">
+                <menupopup id="menubar"   xmlns:n="native">
+                    <menuitem label="Novo"/>
+                    <menuitem label="Consultar"/>
+                    <menuitem label="Modificar"/>
+                    <menuseparator/>
+                    <menuitem label="Eliminar"/>
+                </menupopup>
+                 <menupopup id="menubar2">
+                    <menuitem label="Novo" />
+                    <menuitem label="Historico"/>
+                    <menuitem label="Cola"/>
+                </menupopup>
+                <div class="btn btn-group">
+                    <button zclass="btn btn-primary">Mensaxes</button>
+                    <button zclass="btn btn-default dropdown-toggle" iconSclass="caret"
+                        onClick='menubar2.open(self.previousSibling, "after_start")'>
+                    </button>
+                    <button zclass="btn btn-info">Usuarios</button>
+                    <button zclass="btn btn-default dropdown-toggle" iconSclass="caret"
+                        onClick='menubar.open(self.previousSibling, "after_start")'>
+                    </button>
+                    <button zclass="btn btn-info">Grupos</button>
+                    <button zclass="btn btn-default dropdown-toggle" iconSclass="caret"
+                        onClick='menubar.open(self.previousSibling, "after_start")'>
+                    </button>
+                    <button zclass="btn btn-info" iconSclass="user">Axenda</button>
+                    <button zclass="btn btn-default dropdown-toggle" iconSclass="caret"
+                        onClick='menubar.open(self.previousSibling, "after_start")'>
+                    </button>
+                    
+                </div>
+                <!--<menubar id="menubar">
+                    <menu label="Mensaxes" src="/resources/iconos16/email.png" >
+                        <menupopup>
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/historico.png" label="Historico" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/proceso.png" label="Cola" onClick="alert(self.label)"/>
+                            <menuseparator/>
+                            <menuitem label="Sair" onClick="alert(self.label)"/>
+                        </menupopup>
+                    </menu>
+                    <menu label="Usuarios" src="/resources/iconos16/usuario.png" >
+                        <menupopup>
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/buscar.png" label="Consultar" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/editar.png" label="Modificar" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/eliminar.png" label="Eliminar" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/candado.png" label="Permisos" onClick="alert(self.label)"/>
+                        </menupopup>
+                    </menu>
+                    <menu label="Grupos" src="/resources/iconos16/grupo.png" >
+                        <menupopup>
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/buscar.png" label="Consultar" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/editar.png" label="Modificar" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/eliminar.png" label="Eliminar" onClick="alert(self.label)"/>
+                        </menupopup>
+                    </menu>
+                    <menu label="Contacto" src="/resources/iconos16/contacto.png" >
+                        <menupopup>
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/buscar.png" label="Consultar" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/editar.png" label="Modificar" onClick="alert(self.label)"/>
+                            <menuitem src="/resources/iconos16/eliminar.png" label="Eliminar" onClick="alert(self.label)"/>
+                        </menupopup>
+                    </menu>
+            
+                </menubar> -->
+            </div>
+        </div>
+        <div  class="row" xmlns:n="native" >
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native" self="@{insert(content)}" style="min-height:300px;">
+            </div>
+        </div>
+    
+    <n:footer xmlns:n="native">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native" >
+            Web desenrolada polo Concello de Lugo
+        </div>
+    </n:footer>
+   </div>
+</zk>

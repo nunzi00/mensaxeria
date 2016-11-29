@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+    <?meta charset="utf-8"/?>
+    <?meta http-equiv="X-UA-Compatible" content="IE=edge"/?>
+    <?meta name="viewport" content="width=device-width, initial-scale=1"/?>
+    <div class="container-fluid" xmlns:n="native" >
+        <div  class="row" xmlns:n="native" self="@{insert(header)}">
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native">
+                <div zclass="jumbotron">
+                <n:h1  xmlns:n="native" >App. Mensaxeria</n:h1>
+                </div>
+            </div>
+        </div>
+        <div  class="row" xmlns:n="native" >
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native">
+                <menubar id="menubar" apply="com.concello.mensaxeria.MenuComposer">
+                    <menu label="Mensaxes" src="/resources/iconos16/email.png" >
+                        <menupopup>
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo" id='novoMensaxe' />
+                            <menuitem src="/resources/iconos16/historico.png" label="Historico" id='historicoMensaxe'/>
+                            <menuitem src="/resources/iconos16/proceso.png" label="Cola" id="colaMensaxe"/>
+                            <menuseparator/>
+                            <menuitem label="Sair" id="salir"/>
+                        </menupopup>
+                    </menu>
+                    <menu label="Usuarios" src="/resources/iconos16/usuario.png" >
+                        <menupopup>
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo" id="novoUsuario"/>
+                            <menuitem src="/resources/iconos16/buscar.png" label="Consultar" id="buscarUsuario"/>
+                            <menuitem src="/resources/iconos16/editar.png" label="Modificar" id="modificarUsuario"/>
+                            <menuitem src="/resources/iconos16/eliminar.png" label="Eliminar" id="eliminarUsuario"/>
+                            <menuitem src="/resources/iconos16/candado.png" label="Permisos" id="permisosUsuario"/>
+                        </menupopup>
+                    </menu>
+                    <menu label="Grupos" src="/resources/iconos16/grupo.png" >
+                        <menupopup>
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo" id="novoGrupo"/>
+                            <menuitem src="/resources/iconos16/buscar.png" label="Consultar" id="consultarGrupo"/>
+                            <menuitem src="/resources/iconos16/editar.png" label="Modificar" id="modificarGrupo"/>
+                            <menuitem src="/resources/iconos16/eliminar.png" label="Eliminar" id="eliminarGrupo"/>
+                        </menupopup>
+                    </menu>
+                    <menu label="Contacto" src="/resources/iconos16/contacto.png" >
+                        <menupopup>
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo" id="novoContacto"/>
+                            <menuitem src="/resources/iconos16/buscar.png" label="Consultar" id="buscarContacto"/>
+                            <menuitem src="/resources/iconos16/editar.png" label="Modificar" id="editarContacto"/>
+                            <menuitem src="/resources/iconos16/eliminar.png" label="Eliminar" id="eliminarContacto"/>
+                        </menupopup>
+                    </menu>
+                </menubar>
+            </div>
+        </div>
+        <div  class="row" xmlns:n="native" >
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native" self="@{insert(content)}">
+
+            </div>
+        </div>
+            
+    </div>
+    <n:footer xmlns:n="native" zclass="footer" class="footer">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native" >
+            Web desenrolada polo Concello de Lugo
+        </div>
+    </n:footer>
+</zk>
