@@ -13,12 +13,16 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Footer;
 
 /**
  *
  * @author lnunzi
  */
 public class MenuComposer extends SelectorComposer<Component> {
+
+    @Wire
+    private Footer footer_historico;
 
 //    private static final Logger logger = Logger.getLogger(MenuComposer.class.getName());
 //    private Level basico = Level.INFO;
@@ -38,10 +42,28 @@ public class MenuComposer extends SelectorComposer<Component> {
         }
     }
 
+    @Listen("onClick = #novoMensaxeSMS")
+    public void novoMensaxeSMS() {
+        try {
+            //logger.log(basico,"Novo mensaxe");
+            new MensaxeService().novoSMS();
+        } catch (Exception ex) {
+            Logger.getLogger(MenuComposer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Listen("onClick = #btnGardarMensaxe")
+    public void guardarMensaje() {
+
+    }
+
     @Listen("onClick = #historicoMensaxe")
     public void historico() {
         try {
-            new MensaxeService().historico();
+            MensaxeService mens = new MensaxeService();
+            mens.historico();
+//            int size = mens.getSize();
+            footer_historico.setLabel("Se han encontrado" + "----" + " registros");
         } catch (Exception ex) {
             Logger.getLogger(MenuComposer.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,7 +71,11 @@ public class MenuComposer extends SelectorComposer<Component> {
 
     @Listen("onClick = #colaMensaxe")
     public void cola() {
-
+        try {
+            EnvioSMS sms = new EnvioSMS();
+        } catch (Exception e) {
+            Logger.getLogger(MenuComposer.class.getName()).log(Level.SEVERE, e.getMessage());
+        }
     }
 
     @Listen("onClick = #novoUsuario")

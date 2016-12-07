@@ -3,20 +3,21 @@
 <?meta name="viewport" content="width=device-width, initial-scale=1"/?>
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
 <zk>
+     <style src="/widgets/grid/data_filter/style.css" />
     <div self="@{define(content)}" width="100%"
-        apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.concello.mensaxeria.MensaxeModel')"
-        >
+         apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.concello.mensaxeria.MensaxeModel')"
+    >
         Mensajes: <label value="@load(vm.size)" />
         <grid height="350px" model="@load(vm.mensajes)"
-            emptyMessage="No hay mensajes enviados"
-            mold="paging" pageSize="25">
-            <columns>
-                <column label="id" width="50px" />
-                <column label="Mensaje" />
-                <column label="Enviado Por" width="150px" />
-                <column label="Enviado" width="80px" />
-                <column label="Fecha" width="100px" />
-                <column label="Fecha Envio" width="100px" />
+              emptyMessage="No hay mensajes enviados"
+              mold="paging" pageSize="25">
+            <columns menupopup="auto">
+                <column label="id"  sort="auto(id_mensaxe)" />
+                <column label="Mensaje"  sort="auto(contenido)"/>
+                <column label="Enviado Por"  sort="auto(enviado_por)"/>
+                <column label="Enviado"  sort="auto(enviado)"/>
+                <column label="Fecha"  sort="auto(fecha_creacion)"/>
+                <column label="Fecha Envio"  sort="auto(fecha_envio)"/>
             </columns>
             <template name="model">
                 <row>
@@ -24,10 +25,10 @@
                     <label value="@load(each.contenido)" />
                     <label value="@load(each.enviado_por)" />
                     <zk if="${(each.enviado == 1)}">
-                            <label value="Si"/>
+                        <label value="Si"/>
                     </zk>
                     <zk if="${(each.enviado == 0)}">
-                            <label value="No"/>
+                        <label value="No"/>
                     </zk>
 
                     <!--<label value="@load(each.enviado)"  if="${each.enviado=='0'}/>-->
@@ -36,6 +37,9 @@
                     <!--<button label="Delete" onClick="@command('removeMail', mail=each)" />-->
                 </row>
             </template>
+            <foot>
+            <footer span="6" id="footer_historico" class="footer_right" />
+        </foot>
         </grid>
 
     </div>

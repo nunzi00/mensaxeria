@@ -16,14 +16,15 @@
                 <menubar id="menubar" apply="com.concello.mensaxeria.MenuComposer">
                     <menu label="Mensaxes" src="/resources/iconos16/email.png" >
                         <menupopup>
-                            <menuitem src="/resources/iconos16/mas.png" label="Novo" id='novoMensaxe' />
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo HTML" id='novoMensaxe' />
+                            <menuitem src="/resources/iconos16/mas.png" label="Novo SMS" id='novoMensaxeSMS' />
                             <menuitem src="/resources/iconos16/historico.png" label="Historico" id='historicoMensaxe'/>
                             <menuitem src="/resources/iconos16/proceso.png" label="Cola" id="colaMensaxe"/>
                             <menuseparator/>
                             <menuitem label="Sair" id="salir"/>
                         </menupopup>
                     </menu>
-                    <menu label="Usuarios" src="/resources/iconos16/usuario.png" >
+                   <!-- <menu label="Usuarios" src="/resources/iconos16/usuario.png" >
                         <menupopup>
                             <menuitem src="/resources/iconos16/mas.png" label="Novo" id="novoUsuario"/>
                             <menuitem src="/resources/iconos16/buscar.png" label="Consultar" id="buscarUsuario"/>
@@ -31,7 +32,7 @@
                             <menuitem src="/resources/iconos16/eliminar.png" label="Eliminar" id="eliminarUsuario"/>
                             <menuitem src="/resources/iconos16/candado.png" label="Permisos" id="permisosUsuario"/>
                         </menupopup>
-                    </menu>
+                    </menu>-->
                     <menu label="Grupos" src="/resources/iconos16/grupo.png" >
                         <menupopup>
                             <menuitem src="/resources/iconos16/mas.png" label="Novo" id="novoGrupo"/>

@@ -1,0 +1,18 @@
+<?meta charset="utf-8"/?>
+<?meta http-equiv="X-UA-Compatible" content="IE=edge"/?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"/?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
+<?init class="my.AllCustomerFinder" arg0="customers"?>
+ 
+<listbox id="personList" width="800px" rows="5">
+    <listhead>
+        <listheader label="Name"/>
+        <listheader label="Surname"/>
+        <listheader label="Due Amount"/>
+    </listhead>
+    <listitem value="${each.id}" forEach="${customers}">
+        <listcell label="${each.name}"/>
+        <listcell label="${each.surname}"/>
+        <listcell label="${each.due}"/>
+    </listitem>
+</listbox>

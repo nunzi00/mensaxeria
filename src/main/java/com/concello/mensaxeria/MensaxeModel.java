@@ -3,21 +3,23 @@ package com.concello.mensaxeria;
 import java.util.List;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
+import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zkmax.ui.select.annotation.Subscribe;
-import org.zkoss.zul.Listcell;
-import org.zkoss.zul.Listitem;
-import org.zkoss.zul.ListitemRenderer;
+import org.zkoss.zul.Footer;
 
 public final class MensaxeModel extends SelectorComposer<Component> {
 
     private List<Mensaxe> mensajes;
     MensaxeService Mens;
     private int size = 0;
+    
+      
 
     public MensaxeModel() throws Exception {
         this.Mens = new MensaxeService();
-        setMensajes(getMens().getMensajes());
-        size = Mens.getSize();
+        setMensajes(this.Mens.getMensajes());
+//        size = Mens.getSize();
+//        
     }
 
     /**

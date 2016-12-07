@@ -9,11 +9,9 @@
         <ckeditor id="ed" width="500px"  height="200px">
             <attribute name="value"><![CDATA[ ]]></attribute>
         </ckeditor>
-        
-        <n:div id="mensaje" contenteditable="true" xmlns:n="native">
-        </n:div>
         <label id="">Fecha de envio</label>
         <datebox id="db"/>
+        
         <separator height="20px"/>
         <label>Prioridad</label>
         <combobox>
@@ -21,7 +19,8 @@
             <comboitem  Value="2" label="Normal"/>
             <comboitem  Value="3" label="Baja"/>
 	                </combobox>
+            <label class="error" value="@load(vmsgs['prioridad'])" />
         <separator height="20px"/>
-        <button label="Previsualizar Mensaxe" id="btnGardarMensaxe" zclass="btn btn-success"></button>
+        <button label="Guardar" id="btnGardarMensaxe" zclass="btn btn-success"></button>
     </div>
 </zk>

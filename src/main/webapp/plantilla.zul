@@ -21,7 +21,7 @@
                  <menupopup id="menubar2">
                     <menuitem label="Novo" />
                     <menuitem label="Historico"/>
-                    <menuitem label="Cola"/>
+                    <menuitem label="Cola" id="colaMensaxe"/>
                 </menupopup>
                 <div class="btn btn-group">
                     <button zclass="btn btn-primary">Mensaxes</button>

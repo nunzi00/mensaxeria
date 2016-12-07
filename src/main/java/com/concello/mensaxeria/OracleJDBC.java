@@ -7,9 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import org.zkoss.util.logging.Log;
+import org.zkoss.zk.ui.Page;
+import org.zkoss.zk.ui.util.Initiator;
 
-public class OracleJDBC {
+public class OracleJDBC  implements Initiator {
 
     private static final Log log = Log.lookup(OracleJDBC.class);
     private static Connection conexion = null;
@@ -190,6 +193,11 @@ public class OracleJDBC {
             e.getMessage();
         }
         return null;
+    }
+
+    @Override
+    public void doInit(Page page, Map<String, Object> args) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

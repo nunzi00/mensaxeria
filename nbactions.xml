@@ -1,34 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
         <action>
-            <actionName>run.single.main</actionName>
-            <preAction>build-with-dependencies</preAction>
-            <packagings>
-                <packaging>*</packaging>
-                
-                
-            </packagings>
-            <goals>
-                <goal>process-classes</goal>
-                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
-            </goals>
-            <properties>
-                <exec.args>-classpath %classpath ${packageClassName}</exec.args>
-                <exec.executable>java</exec.executable>
-                <exec.classpathScope>${classPathScope}</exec.classpathScope>
-                <Env.MAVEN_OPTS>-Xms512m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -Xverify:none -Xnoclassgc</Env.MAVEN_OPTS>
-                <jpda.listen>maven</jpda.listen>
-            </properties>
-        </action>
-        <action>
             <actionName>debug</actionName>
+            <preAction>build-with-dependencies</preAction>
             <packagings>
                 <packaging>war</packaging>
                 <packaging>ear</packaging>
                 <packaging>ejb</packaging>
             </packagings>
             <goals>
-                <goal>package</goal>
+                <goal>jetty:run</goal>
             </goals>
             <properties>
                 <netbeans.deploy.debugmode>true</netbeans.deploy.debugmode>
@@ -38,20 +19,14 @@
         </action>
         <action>
             <actionName>run</actionName>
+            <preAction>build-with-dependencies</preAction>
             <packagings>
                 <packaging>war</packaging>
                 <packaging>ear</packaging>
                 <packaging>ejb</packaging>
             </packagings>
             <goals>
-                <goal>package</goal>
-            </goals>
-        </action>
-        <action>
-            <actionName>CUSTOM-Jetty</actionName>
-            <displayName>Jetty</displayName>
-            <goals>
                 <goal>jetty:run</goal>
             </goals>
         </action>
-    </actions>
+</actions>

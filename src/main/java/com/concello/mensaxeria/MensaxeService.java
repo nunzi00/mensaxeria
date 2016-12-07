@@ -23,31 +23,42 @@ public final class MensaxeService {
     private static final Log log = Log.lookup(MensaxeService.class);
     final static OracleJDBC bd = new OracleJDBC();
 
-    public MensaxeService() throws Exception {
+    public MensaxeService() {
         mensajes = new ArrayList();
-        getTodos();
+        try {
+            getTodos();
+        } catch (Exception ex) {
+            log.error( ex);
+        }
     }
 
-    private static List<Mensaxe> cargarRecordset(ResultSet resultset) throws Exception {
+    private static List<Mensaxe> cargarRecordset(ResultSet resultset) {
         try {
-            int numcols = resultset.getMetaData().getColumnCount();
-            while (resultset.next()) {
-                ArrayList row = new ArrayList<>(numcols);
-                for (int i = 1; i <= numcols; i++) {
-//                log.info(resultset.getString(i));
-                    row.add(resultset.getString(i));
+            if (resultset != null) {
+                int numcols = resultset.getMetaData().getColumnCount();
+                while (resultset.next()) {
+                    ArrayList row = new ArrayList<>(numcols);
+                    for (int i = 1; i <= numcols; i++) {
+                        row.add(resultset.getString(i));
+                    }
+                    mensajes.add(new Mensaxe(row));
                 }
-                mensajes.add(new Mensaxe(row));
             }
-        } catch (Exception e) {
-            log.error(e.getMessage());
+            return mensajes;
+        } catch (SQLException ex) {
+            log.error(ex);
         }
-        return mensajes;
+        return null;
     }
 
     public final void novo() {
         log.info("Novo mensaxe");
         Executions.sendRedirect("novoMensaxe.zul");
+    }
+
+    public final void novoSMS() {
+        log.info("Novo mensaxe SMS");
+        Executions.sendRedirect("novoSMS.zul");
     }
 
     public final void gardarMensaxe() {
@@ -68,7 +79,7 @@ public final class MensaxeService {
     public static List<Mensaxe> getTodos() throws Exception {
         mensajes = new ArrayList();
         log.info("Recuperando todos los  mensaxes");
-        String sql = "SELECT * FROM MENSAXES";
+        String sql = "SELECT * FROM DEV.MENSAXES ";
         try {
             cargarRecordset(bd.executeQuery(sql));
         } catch (SQLException e) {
@@ -91,7 +102,7 @@ public final class MensaxeService {
         mensajes = mens;
     }
 
-    public int getSize() {
+    public static int getSize() {
         return (int) mensajes.size();
     }
 }

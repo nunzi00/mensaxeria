@@ -1,0 +1,32 @@
+<?meta charset="utf-8"/?>
+<?meta http-equiv="X-UA-Compatible" content="IE=edge"/?>
+<?meta name="viewport" content="width=device-width, initial-scale=1"/?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
+<zk>
+    <div self="@{define(content)}" width="100%"
+         apply="com.concello.mensaxeria.MensaxeModel"
+         validationMessages="@id('vmsgs')"
+         form="@id('fx') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)"
+         class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native" style="min-height:200px">
+        <n:textarea id="contenidoSMS" xmlns:n="native" required="true" maxlength="459" cols="100" rows="5" value="@bind(fx.contenido)">
+            
+        </n:textarea>
+        <label id="Fecha Envio">Fecha de envio</label>
+        <datebox id="db"  value="@bind(fx.fecha_envio)"/>
+        <label class="error" value="@load(vmsgs['fecha_envio'])" />
+        <separator height="20px"/>
+        <separator height="20px"/>
+        <label>Prioridad</label>
+        <combobox  value="@bind(fx.prioridad)">
+            <comboitem  Value="1" label="Urgente"/>
+            <comboitem  Value="2" label="Normal"/>
+            <comboitem  Value="3" label="Baja"/>
+        </combobox>
+        <label class="error" value="@load(vmsgs['prioridad'])" />   
+
+        <separator height="20px"/>
+        <label visible="@load(empty vmsgs)"
+               value="@load(empty vmsgs ? 'Form successfully submitted!' : '', before='submit')" />
+        <button label="Guardar" id="btnGardarMensaxe" zclass="btn btn-success" onClick="@command('submit')"></button>
+    </div>
+</zk>
