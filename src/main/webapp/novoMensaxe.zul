@@ -4,23 +4,26 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul" ?>
 <zk>
     <div self="@{define(content)}" width="100%"
-         apply="com.concello.mensaxeria.MensaxeModel"
-         class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" xmlns:n="native" style="min-height:200px">
-        <ckeditor id="ed" width="500px"  height="200px">
+            apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('com.concello.mensaxeria.MensaxeModel')"
+         class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" 
+         xmlns:n="native" style="min-height:200px"
+         validationMessages="@id('vmsgs')">
+        <ckeditor id="ed" width="500px"  height="200px" value="@bind(vm.mensaje.contenido)">
             <attribute name="value"><![CDATA[ ]]></attribute>
         </ckeditor>
         <label id="">Fecha de envio</label>
-        <datebox id="db"/>
+        <datebox id="db"  format="d/M/yy KK:mm:ss a" width="150px" onCreate="self.value = new Date()" value="@save(vm.mensaje.fecha_envio_date, before='submit') @validator('com.concello.mensaxeria.utilidades.Fecha_envioValidator')" />
         
         <separator height="20px"/>
         <label>Prioridad</label>
-        <combobox>
+        <combobox value="@bind(vm.mensaje.prioridad)">
             <comboitem  Value="1" label="Urgente"/>
             <comboitem  Value="2" label="Normal"/>
             <comboitem  Value="3" label="Baja"/>
 	                </combobox>
-            <label class="error" value="@load(vmsgs['prioridad'])" />
+            <label class="error" value="@load(vmsgs['prioridad']), before='submit')"/>
         <separator height="20px"/>
-        <button label="Guardar" id="btnGardarMensaxe" zclass="btn btn-success"></button>
+        <button label="Guardar" id="btnGardarMensaxe" zclass="btn btn-success" onClick="@command('submit')"></button>
     </div>
 </zk>
