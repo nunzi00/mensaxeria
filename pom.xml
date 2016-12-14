@@ -5,7 +5,7 @@
     <artifactId>mensaxeria</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <zk.version>8.0.1.1</zk.version>
+        <zk.version>8.0.2.2</zk.version>
         <commons-io>2.4</commons-io>
         <maven.build.timestamp.format>yyyy-MM-dd</maven.build.timestamp.format>
         <packname>-${project.version}-FL-${maven.build.timestamp}</packname>
@@ -26,11 +26,6 @@
             <name>ZK CE Repository</name>
             <url>http://mavensync.zkoss.org/maven2</url>
         </repository>
-        <repository>
-            <id>ZK EVAL</id>
-            <name>ZK Evaluation Repository</name>
-            <url>http://mavensync.zkoss.org/eval</url>
-        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -41,35 +36,9 @@
     </pluginRepositories>
     <dependencies>
         <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkbind</artifactId>
-            <version>${zk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zul</artifactId>
-            <version>${zk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkplus</artifactId>
-            <version>${zk.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zhtml</artifactId>
-            <version>${zk.version}</version>
-        </dependency>
-		
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.zkoss.zkforge</groupId>
-            <artifactId>ckez</artifactId>
-            <version>4.4.6.3</version>
         </dependency>
         <dependency> 
             <groupId>org.slf4j</groupId>
@@ -87,32 +56,7 @@
             <version>1.2</version>
             <type>jar</type>
         </dependency>
-        <!--<dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkmax</artifactId>
-            <version>8.0.3.1-Eval</version>
-            <type>jar</type>
-        </dependency>-->
-        <dependency>
-            <groupId>org.apache.xmlrpc</groupId>
-            <artifactId>xmlrpc</artifactId>
-            <version>3.1.3</version>
-            <type>xml</type>
-            <classifier>site</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkmax</artifactId>
-            <version>8.0.1.1-Eval</version>
-            <type>jar</type>
-        </dependency>
         <!-- Jetty is needed if you're are not using the CXFServlet -->
-        <!--<dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkmax</artifactId>
-            <version>8.0.3.1-Eval</version>
-            <type>jar</type>
-        </dependency>-->
         <dependency>
             <groupId>axis</groupId>
             <artifactId>axis-jaxrpc</artifactId>
@@ -144,34 +88,6 @@
             <version>1.4</version>
         </dependency>
         <dependency>
-            <groupId>axis2</groupId>
-            <artifactId>security</artifactId>
-            <version>0.95</version>
-            <type>mar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.axis</groupId>
-            <artifactId>axis-jaxrpc</artifactId>
-            <version>1.4</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.axis</groupId>
-            <artifactId>axis-ant</artifactId>
-            <version>1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.axis</groupId>
-            <artifactId>axis-saaj</artifactId>
-            <version>1.4</version>
-        </dependency>
-        <dependency>
-            <groupId>axis</groupId>
-            <artifactId>axis</artifactId>
-            <version>1.4</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.5</version>
@@ -182,6 +98,75 @@
             <artifactId>org-apache-commons-lang3</artifactId>
             <version>6.5.0.Final</version>
             <classifier>tests</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zul</artifactId>
+            <version>8.0.2.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zkbind-impl</artifactId>
+            <version>8.0.2.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.common</groupId>
+            <artifactId>zweb</artifactId>
+            <version>8.0.2.2</version>
+            <type>jar</type>
+                   </dependency>
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zhtml</artifactId>
+            <version>8.0.2.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zk</artifactId>
+            <version>8.0.2.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.theme</groupId>
+            <artifactId>zktheme</artifactId>
+            <version>8.0.2.2</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.zk</groupId>
+            <artifactId>zkbind-api</artifactId>
+            <version>8.0.2.2</version>
+            <type>jar</type>
+        </dependency>
+                      
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty</artifactId>
+            <version>7.0.0.pre5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty-client</artifactId>
+            <version>7.0.0.pre5</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty-start</artifactId>
+            <version>7.0.0.pre5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.zkforge</groupId>
+            <artifactId>ckez</artifactId>
+            <version>4.4.6.3</version>
         </dependency>
     </dependencies>
     <build>

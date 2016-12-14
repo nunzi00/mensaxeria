@@ -8,10 +8,13 @@ package com.concello.mensaxeria;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import org.exolab.castor.types.DateTime;
+import org.zkoss.bind.annotation.BindingParam;
+import org.zkoss.bind.annotation.Command;
 import org.zkoss.util.logging.Log;
 import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.select.annotation.Listen;
 
 /**
  *
@@ -20,15 +23,15 @@ import org.zkoss.zk.ui.select.annotation.Listen;
 public final class MensaxeService {
 
     private static List<Mensaxe> mensajes;
+    private static Mensaxe mensaje;
     private static final Log log = Log.lookup(MensaxeService.class);
-    final static OracleJDBC bd = new OracleJDBC();
 
     public MensaxeService() {
         mensajes = new ArrayList();
         try {
             getTodos();
         } catch (Exception ex) {
-            log.error( ex);
+            log.error(ex);
         }
     }
 
@@ -51,18 +54,14 @@ public final class MensaxeService {
         return null;
     }
 
-    public final void novo() {
+    public void novo() {
         log.info("Novo mensaxe");
         Executions.sendRedirect("novoMensaxe.zul");
     }
 
-    public final void novoSMS() {
+    public void novoSMS() {
         log.info("Novo mensaxe SMS");
         Executions.sendRedirect("novoSMS.zul");
-    }
-
-    public final void gardarMensaxe() {
-        log.info("Gardando Mensaxe");
     }
 
     public final void historico() throws Exception {
@@ -71,17 +70,12 @@ public final class MensaxeService {
         Executions.sendRedirect("historico.zul");
     }
 
-    @Listen("onClick = #btnGardarMensaxe")
-    public void gardar() {
-//        new MensaxeService().gardarMensaxe();
-    }
-
     public static List<Mensaxe> getTodos() throws Exception {
         mensajes = new ArrayList();
         log.info("Recuperando todos los  mensaxes");
         String sql = "SELECT * FROM DEV.MENSAXES ";
         try {
-            cargarRecordset(bd.executeQuery(sql));
+            cargarRecordset(new OracleJDBC().executeQuery(sql));
         } catch (SQLException e) {
             e.getStackTrace();
         }
@@ -95,6 +89,10 @@ public final class MensaxeService {
         return mensajes;
     }
 
+    public static Mensaxe getMensaje() {
+        return mensaje;
+    }
+
     /**
      * @param mensajes the mensajes to set
      */
@@ -104,5 +102,38 @@ public final class MensaxeService {
 
     public static int getSize() {
         return (int) mensajes.size();
+    }
+
+    @Command("addMensaxeHTML")
+    public static void doAddMensaxeHTML(@BindingParam("form") Mensaxe form) {
+        log.info("guardarMensaje en MensaxeService");
+        //Calendar fecha_creacion = Calendar.getInstance();
+        Integer enviado = 0;
+        String enviado_por = "lnunzi";
+        String fenvio = form.getFecha_envio();
+        log.info(fenvio);
+        Date fecha_envio = Utilidades.StringToDate(fenvio);
+        Integer prioridad = form.getPrioridad();
+        String cadena = form.getContenido();
+        String contenido = cadena.trim();
+        Date fecha_creacion = new Date();
+        List<Object> valores = new ArrayList<>();
+//CONTENIDO,ENVIADOPOR,FECHA_ENVIO,ENVIADO,FECHA_CREACION,PRIORIDAD
+        valores.add(contenido);
+        valores.add(enviado_por);
+        valores.add(fecha_envio);
+        valores.add(enviado);
+//        valores.add(fecha_creacion);
+        valores.add(prioridad);
+        List<String> excepciones=new ArrayList<>();
+        excepciones.add("ID_MENSAXE");
+        excepciones.add("FECHA_CREACION");
+        try {
+            OracleJDBC bd = new OracleJDBC();
+            bd.insertar("MENSAXES", valores, excepciones);
+        } catch (SQLException ex) {
+            log.error(ex.getMessage());
+        }
+
     }
 }

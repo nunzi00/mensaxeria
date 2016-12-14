@@ -6,9 +6,9 @@
 package com.concello.mensaxeria;
 
 import java.awt.Checkbox;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.scene.control.Button;
+import org.zkoss.util.logging.Log;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
@@ -20,6 +20,7 @@ import org.zkoss.zul.Footer;
  * @author lnunzi
  */
 public class MenuComposer extends SelectorComposer<Component> {
+    private static final Log log = Log.lookup(EnvioSMS.class);
 
     @Wire
     private Footer footer_historico;
@@ -38,7 +39,7 @@ public class MenuComposer extends SelectorComposer<Component> {
             //logger.log(basico,"Novo mensaxe");
             new MensaxeService().novo();
         } catch (Exception ex) {
-            Logger.getLogger(MenuComposer.class.getName()).log(Level.SEVERE, null, ex);
+            log.error(ex.getMessage());
         }
     }
 
@@ -48,7 +49,7 @@ public class MenuComposer extends SelectorComposer<Component> {
             //logger.log(basico,"Novo mensaxe");
             new MensaxeService().novoSMS();
         } catch (Exception ex) {
-            Logger.getLogger(MenuComposer.class.getName()).log(Level.SEVERE, null, ex);
+            log.error(ex.getMessage());
         }
     }
 
@@ -65,7 +66,7 @@ public class MenuComposer extends SelectorComposer<Component> {
 //            int size = mens.getSize();
             footer_historico.setLabel("Se han encontrado" + "----" + " registros");
         } catch (Exception ex) {
-            Logger.getLogger(MenuComposer.class.getName()).log(Level.SEVERE, null, ex);
+           log.error(ex.getMessage());
         }
     }
 
@@ -74,7 +75,8 @@ public class MenuComposer extends SelectorComposer<Component> {
         try {
             EnvioSMS sms = new EnvioSMS();
         } catch (Exception e) {
-            Logger.getLogger(MenuComposer.class.getName()).log(Level.SEVERE, e.getMessage());
+           log.error(e.getMessage());
+           e.printStackTrace();
         }
     }
 

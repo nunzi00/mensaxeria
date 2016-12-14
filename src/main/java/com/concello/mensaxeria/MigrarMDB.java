@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class MigrarMDB extends OracleJDBC {
 
-    public MigrarMDB() throws SQLException {
+    public MigrarMDB() throws SQLException, ClassNotFoundException {
         //setJDBC_DRIVER();
         setDB_URL("jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=/resources/SMS.mdb;DriverID=22;READONLY=true}");
         setUSER(null);

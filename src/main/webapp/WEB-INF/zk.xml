@@ -2,18 +2,22 @@
 
 <zk>
     <system-config>
-<ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
-</system-config>
-<device-config>
-   <device-type>ajax</device-type>
-   <embed><![CDATA[
+        <ui-factory-class>org.zkoss.zk.ui.http.SerializableUiFactory</ui-factory-class>
+    </system-config>
+    <device-config>
+        <device-type>ajax</device-type>
+        <embed><![CDATA[
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
     ]]></embed>
-</device-config>
-<device-config>
-   <device-type>ajax</device-type>
-   <embed><![CDATA[
+    </device-config>
+    <device-config>
+        <device-type>ajax</device-type>
+        <embed><![CDATA[
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     ]]></embed>
-</device-config>
+    </device-config>
+    <language-config>
+        <addon-uri>/WEB-INF/ckez-bind-addon.xml</addon-uri>
+    </language-config>
 </zk>
+    
